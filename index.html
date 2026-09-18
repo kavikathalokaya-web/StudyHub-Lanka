@@ -1,0 +1,3829 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+
+<body>
+  
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="si">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>StudyHub Lanka</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#222;
+    transition:.35s;
+}
+
+body.dark{
+    background:#111827;
+    color:#f8fafc;
+}
+
+header{
+    background:linear-gradient(135deg,#2563eb,#4f46e5);
+    color:white;
+    padding:22px 15px;
+    text-align:center;
+}
+
+header h1{
+    font-size:28px;
+    margin-bottom:6px;
+}
+
+header p{
+    font-size:14px;
+}
+
+nav{
+    background:white;
+    padding:12px;
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+    transition:.35s;
+}
+
+body.dark nav{
+    background:#1f2937;
+}
+
+nav button{
+    border:none;
+    background:#eef2ff;
+    color:#3730a3;
+    padding:10px 17px;
+    border-radius:9px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.2s;
+}
+
+nav button:active{
+    transform:scale(.94);
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:20px 15px;
+}
+
+.ad{
+    background:#fff;
+    border:2px dashed #cbd5e1;
+    padding:25px;
+    text-align:center;
+    border-radius:12px;
+    margin-bottom:25px;
+    color:#64748b;
+}
+
+body.dark .ad{
+    background:#1f2937;
+    border-color:#475569;
+}
+
+.section-title{
+    font-size:23px;
+    margin-bottom:15px;
+}
+
+.all-grades{
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.grade-grid{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.grade{
+    background:white;
+    min-height:65px;
+    border-radius:14px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.25s;
+}
+
+body.dark .grade{
+    background:#1f2937;
+}
+
+.grade:hover{
+    transform:translateY(-3px);
+    box-shadow:0 6px 18px rgba(0,0,0,.13);
+}
+
+.grade-number{
+    background:#2563eb;
+    color:white;
+    width:75px;
+    align-self:stretch;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.grade-name{
+    flex:1;
+    text-align:center;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.grade-arrow{
+    width:55px;
+    color:#2563eb;
+    font-size:25px;
+    text-align:center;
+}
+
+.subject-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+}
+
+.subject{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    cursor:pointer;
+    transition:.25s;
+    text-align:center;
+}
+
+body.dark .subject{
+    background:#1f2937;
+}
+
+.subject:hover{
+    transform:translateY(-4px);
+}
+
+.subject-icon{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.subject h3{
+    font-size:18px;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.feature{
+    background:white;
+    padding:22px;
+    border-radius:15px;
+    box-shadow:0 3px 12px rgba(0,0,0,.07);
+}
+
+body.dark .feature{
+    background:#1f2937;
+}
+
+.feature h3{
+    margin-bottom:8px;
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+    animation:pageIn .3s ease;
+}
+
+@keyframes pageIn{
+
+    from{
+        opacity:0;
+        transform:translateX(15px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+
+}
+
+.back-btn{
+    border:none;
+    background:#2563eb;
+    color:white;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-bottom:20px;
+}
+
+.breadcrumb{
+    background:#eef2ff;
+    color:#3730a3;
+    padding:11px 14px;
+    border-radius:10px;
+    margin-bottom:18px;
+    font-size:14px;
+}
+
+.sub-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.sub-box{
+    background:white;
+    min-height:120px;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.25s;
+}
+
+body.dark .sub-box{
+    background:#1f2937;
+}
+
+.sub-box:hover{
+    transform:translateY(-4px);
+}
+
+.bucket-title{
+    grid-column:1/-1;
+    font-size:20px;
+    font-weight:bold;
+    margin-top:10px;
+    margin-bottom:0;
+    color:#3730a3;
+}
+
+.filter-box{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+body.dark .filter-box{
+    background:#1f2937;
+}
+
+.filter-box label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.filter-box select{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    margin-bottom:17px;
+    background:white;
+    font-size:15px;
+}
+
+.next-btn{
+    width:100%;
+    border:none;
+    background:#2563eb;
+    color:white;
+    padding:13px;
+    border-radius:9px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.papers-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.paper-card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+body.dark .paper-card{
+    background:#1f2937;
+}
+
+.paper-card h3{
+    margin-bottom:15px;
+}
+
+.paper-buttons{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.paper-buttons button{
+    flex:1;
+    min-width:100px;
+    border:none;
+    padding:10px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.open-btn{
+    background:#2563eb;
+    color:white;
+}
+
+.mark-btn{
+    background:#16a34a;
+    color:white;
+}
+
+.not-uploaded{
+    background:#f8fafc;
+    border:1px dashed #cbd5e1;
+    color:#64748b;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+}
+
+body.dark .not-uploaded{
+    background:#111827;
+}
+
+footer{
+    margin-top:40px;
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:25px 15px;
+    font-size:14px;
+}
+
+
+/* FLOATING CONTROL */
+
+.floating-control{
+
+    position:fixed;
+
+    right:18px;
+    bottom:22px;
+
+    width:58px;
+    height:58px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #4f46e5
+    );
+
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:25px;
+
+    cursor:grab;
+
+    box-shadow:
+        0 8px 25px rgba(37,99,235,.35);
+
+    z-index:9999;
+
+    user-select:none;
+
+    transition:transform .2s;
+
+    /* DRAG FIX */
+    touch-action:none;
+
+}
+
+.floating-control:active{
+    cursor:grabbing;
+    transform:scale(.92);
+}
+
+
+/* CONTROL MENU */
+
+.control-menu{
+
+    position:fixed;
+
+    right:18px;
+    bottom:90px;
+
+    width:190px;
+
+    background:white;
+
+    border-radius:16px;
+
+    padding:12px;
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.18);
+
+    display:none;
+
+    z-index:9998;
+
+    animation:menuIn .2s ease;
+
+}
+
+body.dark .control-menu{
+    background:#1f2937;
+}
+
+.control-menu.show{
+    display:block;
+}
+
+@keyframes menuIn{
+
+    from{
+        opacity:0;
+        transform:translateY(10px) scale(.95);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+}
+
+.control-menu button{
+
+    width:100%;
+
+    border:none;
+
+    background:#eef2ff;
+
+    color:#3730a3;
+
+    padding:11px;
+
+    border-radius:10px;
+
+    margin-bottom:7px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+.control-menu button:last-child{
+    margin-bottom:0;
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    header h1{
+        font-size:24px;
+    }
+
+    .subject-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .subject{
+        padding:15px 8px;
+    }
+
+    .subject-icon{
+        font-size:30px;
+    }
+
+    .subject h3{
+        font-size:15px;
+    }
+
+    .sub-grid{
+        grid-template-columns:1fr;
+    }
+
+    .bucket-title{
+        margin-top:15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <h1 id="siteTitle">
+        StudyHub Lanka
+    </h1>
+
+    <p id="siteSubtitle">
+        ශ්‍රී ලංකා O/L අධ්‍යාපනය සහ පසුගිය ප්‍රශ්න පත්‍ර
+    </p>
+
+</header>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <button
+        id="navHome"
+        onclick="showPage('homePage')">
+        Home
+    </button>
+
+    <button
+        id="navGrades"
+        onclick="goToGrades()">
+        All Grades
+    </button>
+
+    <button
+        id="navFeatures"
+        onclick="showFeatures()">
+        Features
+    </button>
+
+</nav>
+
+
+<!-- HOME -->
+
+<section id="homePage" class="page active">
+
+<div class="container">
+
+    <div
+        class="ad"
+        id="adText">
+        Advertisement
+    </div>
+
+    <h2
+        class="all-grades"
+        id="allGradesText">
+        All Grades
+    </h2>
+
+    <div
+        class="grade-grid"
+        id="gradeGrid">
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- SUBJECT PAGE -->
+
+<section id="subjectPage" class="page">
+
+<div class="container">
+
+    <button
+        class="back-btn"
+        id="subjectBack"
+        onclick="goBack()">
+        ← Back
+    </button>
+
+    <div
+        class="breadcrumb"
+        id="subjectBreadcrumb">
+    </div>
+
+    <h2
+        class="section-title"
+        id="subjectPageTitle">
+    </h2>
+
+    <div
+        class="subject-grid"
+        id="subjectGrid">
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- SUB SUBJECT -->
+
+<section id="subSubjectPage" class="page">
+
+<div class="container">
+
+    <button
+        class="back-btn"
+        id="subBack"
+        onclick="goBack()">
+        ← Back
+    </button>
+
+    <div
+        class="breadcrumb"
+        id="subBreadcrumb">
+    </div>
+
+    <h2
+        class="section-title"
+        id="subTitle">
+    </h2>
+
+    <div
+        class="sub-grid"
+        id="subGrid">
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- FILTER -->
+
+<section id="filterPage" class="page">
+
+<div class="container">
+
+    <button
+        class="back-btn"
+        id="filterBack"
+        onclick="goBack()">
+        ← Back
+    </button>
+
+    <div
+        class="breadcrumb"
+        id="filterBreadcrumb">
+    </div>
+
+    <h2
+        class="section-title"
+        id="filterTitle">
+        Select Paper Details
+    </h2>
+
+    <div class="filter-box">
+
+        <label id="provinceLabel">
+            Province
+        </label>
+
+        <select id="provinceSelect">
+
+            <option value="">
+                Select Province
+            </option>
+
+            <option value="Central Province">
+                Central Province
+            </option>
+
+            <option value="Eastern Province">
+                Eastern Province
+            </option>
+
+            <option value="North Central Province">
+                North Central Province
+            </option>
+
+            <option value="Northern Province">
+                Northern Province
+            </option>
+
+            <option value="North Western Province">
+                North Western Province
+            </option>
+
+            <option value="Sabaragamuwa Province">
+                Sabaragamuwa Province
+            </option>
+
+            <option value="Southern Province">
+                Southern Province
+            </option>
+
+            <option value="Uva Province">
+                Uva Province
+            </option>
+
+            <option value="Western Province">
+                Western Province
+            </option>
+
+        </select>
+
+
+        <label id="termLabel">
+            Term
+        </label>
+
+        <select id="termSelect">
+
+            <option value="">
+                Select Term
+            </option>
+
+            <option value="1st Term">
+                1st Term
+            </option>
+
+            <option value="2nd Term">
+                2nd Term
+            </option>
+
+            <option value="3rd Term">
+                3rd Term
+            </option>
+
+        </select>
+
+
+        <button
+            class="next-btn"
+            id="nextButton"
+            onclick="showPapers()">
+
+            Next →
+
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- PAPERS -->
+
+<section id="papersPage" class="page">
+
+<div class="container">
+
+    <button
+        class="back-btn"
+        id="papersBack"
+        onclick="goBack()">
+
+        ← Back
+
+    </button>
+
+    <div
+        class="breadcrumb"
+        id="papersBreadcrumb">
+    </div>
+
+    <h2
+        class="section-title"
+        id="papersTitle">
+
+        Past Papers
+
+    </h2>
+
+    <div
+        class="papers-grid"
+        id="papersGrid">
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- FEATURES PAGE -->
+
+<section id="featuresPage" class="page">
+
+<div class="container">
+
+    <button
+        class="back-btn"
+        id="featuresBack"
+        onclick="goBack()">
+
+        ← Back
+
+    </button>
+
+    <div
+        class="breadcrumb"
+        id="featuresBreadcrumb">
+        StudyHub Lanka › Features
+    </div>
+
+    <h2
+        class="section-title"
+        id="featuresTitle">
+
+        Features
+
+    </h2>
+
+    <div class="features">
+
+        <div class="feature">
+
+            <h3 id="feature1Title">
+                📄 Past Papers
+            </h3>
+
+            <p id="feature1Text">
+                ශ්‍රේණිය, විෂය, පළාත සහ වාරය අනුව
+                ප්‍රශ්න පත්‍ර සොයාගත හැක.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3 id="feature2Title">
+                📝 Marking Schemes
+            </h3>
+
+            <p id="feature2Text">
+                ලබා ගත හැකි marking schemes
+                සමඟ පුහුණුවීමට හැක.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3 id="feature3Title">
+                📱 Mobile Friendly
+            </h3>
+
+            <p id="feature3Text">
+                Phone සහ tablet සඳහා
+                පහසුවෙන් භාවිතා කළ හැක.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3 id="feature4Title">
+                🌐 3 Languages
+            </h3>
+
+            <p id="feature4Text">
+                සිංහල, English සහ தமிழ்
+                භාෂා support.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3 id="feature5Title">
+                🌙 Dark Mode
+            </h3>
+
+            <p id="feature5Text">
+                Eye-friendly Dark Mode
+                භාවිතා කළ හැක.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3 id="feature6Title">
+                📚 Grade 1 - 13
+            </h3>
+
+            <p id="feature6Text">
+                Grade 1 සිට Grade 13 දක්වා
+                වෙන වෙනම content structure.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p id="footer1">
+        © 2026 StudyHub Lanka
+    </p>
+
+    <p id="footer2">
+        Education for everyone 🇱🇰
+    </p>
+
+</footer>
+
+
+<!-- FLOATING SETTINGS BUTTON -->
+
+<div
+    class="floating-control"
+    id="floatingControl">
+
+    ⚙️
+
+</div>
+
+
+<!-- FLOATING SETTINGS MENU -->
+
+<div
+    class="control-menu"
+    id="controlMenu">
+
+    <button
+        id="darkLightButton"
+        onclick="toggleDarkMode()">
+
+        🌙 Dark / Light
+
+    </button>
+
+    <button onclick="changeLanguage('si')">
+        🇱🇰 සිංහල
+    </button>
+
+    <button onclick="changeLanguage('en')">
+        🇬🇧 English
+    </button>
+
+    <button onclick="changeLanguage('ta')">
+        தமிழ்
+    </button>
+
+</div>
+
+
+<script>
+
+
+/* STATE */
+
+let currentPage = "homePage";
+
+let previousPages = [];
+
+let selectedGrade = "";
+
+let selectedSubject = "";
+
+let selectedProvince = "";
+
+let selectedTerm = "";
+
+let currentLanguage =
+    localStorage.getItem("studyhubLanguage") || "si";
+
+
+/* GRADES */
+
+const grades = [];
+
+for(
+    let i=1;
+    i<=13;
+    i++
+){
+
+    grades.push({
+        number:i,
+        name:"Grade " + i
+    });
+
+}
+
+
+/* PRIMARY */
+
+const primarySubjects = [
+
+    {name:"සිංහල",icon:"📚"},
+    {name:"ගණිතය",icon:"📐"},
+    {name:"පරිසර ආශ්‍රිත ක්‍රියාකාරකම්",icon:"🌱"},
+    {name:"English",icon:"🇬🇧"},
+    {name:"දෙමළ",icon:"📖"},
+    {name:"ආගම",icon:"🙏"}
+
+];
+
+
+/* GRADE 6-9 */
+
+const subjects69 = [
+
+    {name:"බුද්ධ ධර්මය",icon:"☸️"},
+    {name:"සිංහල භාෂාව",icon:"📚"},
+    {name:"English",icon:"🇬🇧"},
+    {name:"ගණිතය",icon:"📐"},
+    {name:"විද්‍යාව",icon:"🔬"},
+    {name:"ඉතිහාසය",icon:"🏛️"},
+    {name:"සෞඛ්‍ය",icon:"❤️"},
+    {name:"පුරවැසි",icon:"⚖️"},
+    {name:"සෞන්දර්ය",icon:"🎨"},
+    {name:"Tamil",icon:"📖"},
+    {name:"Geography",icon:"🌍"},
+    {name:"ICT",icon:"💻"}
+
+];
+
+
+/* AESTHETICS */
+
+const aesthetics = [
+
+    {name:"සංගීතය",icon:"🎵"},
+    {name:"නර්තනය",icon:"💃"},
+    {name:"නාට්‍ය හා රංගකලා",icon:"🎭"},
+    {name:"චිත්‍ර",icon:"🎨"}
+
+];
+
+
+/* GRADE 10-11 MAIN */
+
+const subjects1011 = [
+
+    {name:"බුද්ධ ධර්මය",icon:"☸️"},
+
+    {name:"ඉතිහාසය",icon:"🏛️"},
+
+    {name:"ගණිතය",icon:"📐"},
+
+    {name:"සිංහල",icon:"📚"},
+
+    {name:"English",icon:"🇬🇧"},
+
+    {name:"විද්‍යාව",icon:"🔬"},
+
+    {name:"1 වන Bucket",icon:"1️⃣"},
+
+    {name:"2 වන Bucket",icon:"2️⃣"},
+
+    {name:"3 වන Bucket",icon:"3️⃣"}
+
+];
+
+
+/* BUCKET 1 */
+
+const bucket1 = [
+
+    {name:"පුරවැසි අධ්‍යාපනය",icon:"⚖️"},
+
+    {name:"දෙමළ",icon:"📖"},
+
+    {name:"Commerce",icon:"💰"},
+
+    {name:"භූගෝල විද්‍යාව",icon:"🌍"}
+
+];
+
+
+/* BUCKET 2 */
+
+const bucket2 = [
+
+    {name:"චිත්‍ර",icon:"🎨"},
+
+    {name:"සංගීතය",icon:"🎵"},
+
+    {name:"නර්තනය",icon:"💃"},
+
+    {name:"නාට්‍ය හා රංගකලා",icon:"🎭"},
+
+    {name:"සාහිත්‍ය රසස්වාදය",icon:"📖"}
+
+];
+
+
+/* BUCKET 3 */
+
+const bucket3 = [
+
+    {name:"ICT",icon:"💻"},
+
+    {name:"සෞඛ්‍ය",icon:"❤️"},
+
+    {name:"කෘෂිකර්මය",icon:"🌱"},
+
+    {name:"ගෘහ විද්‍යාව",icon:"🏠"}
+
+];
+
+
+/* A/L */
+
+const alScience = [
+
+    {name:"Physics",icon:"⚛️"},
+    {name:"Chemistry",icon:"🧪"},
+    {name:"Biology",icon:"🧬"},
+    {name:"Combined Mathematics",icon:"📐"},
+    {name:"Higher Mathematics",icon:"📊"},
+    {name:"Agricultural Science",icon:"🌱"}
+
+];
+
+const alCommerce = [
+
+    {name:"Accounting",icon:"🧾"},
+    {name:"Business Studies",icon:"💼"},
+    {name:"Economics",icon:"📈"}
+
+];
+
+const alArts = [
+
+    {name:"Sinhala",icon:"📚"},
+    {name:"Tamil",icon:"📖"},
+    {name:"English",icon:"🇬🇧"},
+    {name:"History",icon:"🏛️"},
+    {name:"Geography",icon:"🌍"},
+    {name:"Political Science",icon:"🏛️"},
+    {name:"Economics",icon:"📈"},
+    {name:"Logic & Scientific Method",icon:"🧠"},
+    {name:"Communication & Media",icon:"📺"},
+    {name:"Buddhism",icon:"☸️"},
+    {name:"Art",icon:"🎨"},
+    {name:"Dancing",icon:"💃"},
+    {name:"Music",icon:"🎵"},
+    {name:"Drama & Theatre",icon:"🎭"}
+
+];
+
+const alTechnology = [
+
+    {name:"Engineering Technology",icon:"⚙️"},
+    {name:"Biosystems Technology",icon:"🌱"},
+    {name:"Science for Technology",icon:"🔬"},
+    {name:"ICT",icon:"💻"},
+    {name:"Civil Technology",icon:"🏗️"},
+    {name:"Mechanical Technology",icon:"🔧"},
+    {name:"Electrical / Electronic Technology",icon:"⚡"},
+    {name:"Food Technology",icon:"🍎"},
+    {name:"Agro Technology",icon:"🌾"},
+    {name:"Bio-Resource Technology",icon:"🌿"}
+
+];
+
+
+/* PAPERS */
+
+const papers = [];
+
+
+/* =====================================================
+   TRANSLATIONS
+===================================================== */
+
+const languageData = {
+
+    si:{
+
+        subtitle:
+        "ශ්‍රී ලංකා O/L අධ්‍යාපනය සහ පසුගිය ප්‍රශ්න පත්‍ර",
+
+        home:"මුල් පිටුව",
+
+        grades:"සියලු ශ්‍රේණි",
+
+        features:"විශේෂාංග",
+
+        advertisement:"දැන්වීම",
+
+        back:"← ආපසු",
+
+        paperDetails:
+        "ප්‍රශ්න පත්‍ර විස්තර තෝරන්න",
+
+        province:"පළාත",
+
+        term:"වාරය",
+
+        selectProvince:
+        "පළාත තෝරන්න",
+
+        selectTerm:
+        "වාරය තෝරන්න",
+
+        next:"ඊළඟ →",
+
+        pastPapers:
+        "පසුගිය ප්‍රශ්න පත්‍ර",
+
+        openPaper:
+        "📄 ප්‍රශ්න පත්‍රය",
+
+        marking:
+        "📝 ලකුණු දීමේ පත්‍රය",
+
+        notUploaded:
+        "📄 Paper එක තවම upload කරලා නැහැ",
+
+        selectBoth:
+        "කරුණාකර පළාත සහ වාරය තෝරන්න.",
+
+        paperNotUploaded:
+        "Paper එක තවම upload කරලා නැහැ.",
+
+        settings:"සැකසුම්",
+
+        darkLight:"🌙 Dark / Light",
+
+        feature1Title:"📄 පසුගිය ප්‍රශ්න පත්‍ර",
+
+        feature1Text:
+        "ශ්‍රේණිය, විෂය, පළාත සහ වාරය අනුව ප්‍රශ්න පත්‍ර සොයාගත හැක.",
+
+        feature2Title:"📝 ලකුණු දීමේ පත්‍ර",
+
+        feature2Text:
+        "ලබා ගත හැකි marking schemes සමඟ පුහුණුවීමට හැක.",
+
+        feature3Title:"📱 Mobile Friendly",
+
+        feature3Text:
+        "Phone සහ tablet සඳහා පහසුවෙන් භාවිතා කළ හැක.",
+
+        feature4Title:"🌐 භාෂා 3",
+
+        feature4Text:
+        "සිංහල, English සහ தமிழ் භාෂා support.",
+
+        feature5Title:"🌙 Dark Mode",
+
+        feature5Text:
+        "Eye-friendly Dark Mode භාවිතා කළ හැක.",
+
+        feature6Title:"📚 ශ්‍රේණි 1 - 13",
+
+        feature6Text:
+        "Grade 1 සිට Grade 13 දක්වා වෙන වෙනම content structure.",
+
+        footer2:
+        "සැමට අධ්‍යාපනය 🇱🇰"
+
+    },
+
+
+    en:{
+
+        subtitle:
+        "Sri Lanka O/L Education & Past Papers",
+
+        home:"Home",
+
+        grades:"All Grades",
+
+        features:"Features",
+
+        advertisement:"Advertisement",
+
+        back:"← Back",
+
+        paperDetails:
+        "Select Paper Details",
+
+        province:"Province",
+
+        term:"Term",
+
+        selectProvince:
+        "Select Province",
+
+        selectTerm:
+        "Select Term",
+
+        next:"Next →",
+
+        pastPapers:
+        "Past Papers",
+
+        openPaper:
+        "📄 Open Paper",
+
+        marking:
+        "📝 Marking",
+
+        notUploaded:
+        "📄 Paper has not been uploaded yet",
+
+        selectBoth:
+        "Please select Province and Term.",
+
+        paperNotUploaded:
+        "Paper has not been uploaded yet.",
+
+        settings:"Settings",
+
+        darkLight:"🌙 Dark / Light",
+
+        feature1Title:"📄 Past Papers",
+
+        feature1Text:
+        "Find past papers by grade, subject, province and term.",
+
+        feature2Title:"📝 Marking Schemes",
+
+        feature2Text:
+        "Practice with available marking schemes.",
+
+        feature3Title:"📱 Mobile Friendly",
+
+        feature3Text:
+        "Easy to use on phones and tablets.",
+
+        feature4Title:"🌐 3 Languages",
+
+        feature4Text:
+        "Sinhala, English and Tamil language support.",
+
+        feature5Title:"🌙 Dark Mode",
+
+        feature5Text:
+        "Use Dark Mode for comfortable viewing.",
+
+        feature6Title:"📚 Grades 1 - 13",
+
+        feature6Text:
+        "Separate content structure from Grade 1 to Grade 13.",
+
+        footer2:
+        "Education for everyone 🇱🇰"
+
+    },
+
+
+    ta:{
+
+        subtitle:
+        "இலங்கை O/L கல்வி மற்றும் கடந்தகால வினாத்தாள்கள்",
+
+        home:"முகப்பு",
+
+        grades:"அனைத்து தரங்களும்",
+
+        features:"சிறப்பம்சங்கள்",
+
+        advertisement:"விளம்பரம்",
+
+        back:"← பின்செல்",
+
+        paperDetails:
+        "வினாத்தாள் விவரங்களைத் தேர்ந்தெடுக்கவும்",
+
+        province:"மாகாணம்",
+
+        term:"தவணை",
+
+        selectProvince:
+        "மாகாணத்தைத் தேர்ந்தெடுக்கவும்",
+
+        selectTerm:
+        "தவணையைத் தேர்ந்தெடுக்கவும்",
+
+        next:"அடுத்து →",
+
+        pastPapers:
+        "கடந்தகால வினாத்தாள்கள்",
+
+        openPaper:
+        "📄 வினாத்தாளைத் திறக்கவும்",
+
+        marking:
+        "📝 மதிப்பீட்டுத் திட்டம்",
+
+        notUploaded:
+        "📄 வினாத்தாள் இன்னும் பதிவேற்றப்படவில்லை",
+
+        selectBoth:
+        "மாகாணம் மற்றும் தவணையைத் தேர்ந்தெடுக்கவும்.",
+
+        paperNotUploaded:
+        "வினாத்தாள் இன்னும் பதிவேற்றப்படவில்லை.",
+
+        settings:"அமைப்புகள்",
+
+        darkLight:"🌙 Dark / Light",
+
+        feature1Title:"📄 கடந்தகால வினாத்தாள்கள்",
+
+        feature1Text:
+        "தரம், பாடம், மாகாணம் மற்றும் தவணை அடிப்படையில் வினாத்தாள்களைக் கண்டறியலாம்.",
+
+        feature2Title:"📝 மதிப்பீட்டுத் திட்டங்கள்",
+
+        feature2Text:
+        "கிடைக்கும் மதிப்பீட்டுத் திட்டங்களுடன் பயிற்சி செய்யலாம்.",
+
+        feature3Title:"📱 Mobile Friendly",
+
+        feature3Text:
+        "தொலைபேசி மற்றும் tablet-ல் எளிதாகப் பயன்படுத்தலாம்.",
+
+        feature4Title:"🌐 3 மொழிகள்",
+
+        feature4Text:
+        "சிங்களம், ஆங்கிலம் மற்றும் தமிழ் மொழி ஆதரவு.",
+
+        feature5Title:"🌙 Dark Mode",
+
+        feature5Text:
+        "வசதியான பார்வைக்காக Dark Mode பயன்படுத்தலாம்.",
+
+        feature6Title:"📚 தரம் 1 - 13",
+
+        feature6Text:
+        "தரம் 1 முதல் தரம் 13 வரை தனித்தனி content structure.",
+
+        footer2:
+        "அனைவருக்கும் கல்வி 🇱🇰"
+
+    }
+
+};
+
+
+/* =====================================================
+   SUBJECT TRANSLATIONS
+===================================================== */
+
+const subjectTranslations = {
+
+    "සිංහල":{
+        si:"සිංහල",
+        en:"Sinhala",
+        ta:"சிங்களம்"
+    },
+
+    "සිංහල භාෂාව":{
+        si:"සිංහල භාෂාව",
+        en:"Sinhala Language",
+        ta:"சிங்கள மொழி"
+    },
+
+    "ගණිතය":{
+        si:"ගණිතය",
+        en:"Mathematics",
+        ta:"கணிதம்"
+    },
+
+    "පරිසර ආශ්‍රිත ක්‍රියාකාරකම්":{
+        si:"පරිසර ආශ්‍රිත ක්‍රියාකාරකම්",
+        en:"Environmental Activities",
+        ta:"சுற்றாடல் சார்ந்த செயற்பாடுகள்"
+    },
+
+    "English":{
+        si:"ඉංග්‍රීසි",
+        en:"English",
+        ta:"ஆங்கிலம்"
+    },
+
+    "දෙමළ":{
+        si:"දෙමළ",
+        en:"Tamil",
+        ta:"தமிழ்"
+    },
+
+    "Tamil":{
+        si:"දෙමළ",
+        en:"Tamil",
+        ta:"தமிழ்"
+    },
+
+    "ආගම":{
+        si:"ආගම",
+        en:"Religion",
+        ta:"சமயம்"
+    },
+
+    "බුද්ධ ධර්මය":{
+        si:"බුද්ධ ධර්මය",
+        en:"Buddhism",
+        ta:"பௌத்தம்"
+    },
+
+    "ඉතිහාසය":{
+        si:"ඉතිහාසය",
+        en:"History",
+        ta:"வரலாறு"
+    },
+
+    "විද්‍යාව":{
+        si:"විද්‍යාව",
+        en:"Science",
+        ta:"விஞ்ஞானம்"
+    },
+
+    "සෞඛ්‍ය":{
+        si:"සෞඛ්‍ය",
+        en:"Health",
+        ta:"சுகாதாரம்"
+    },
+
+    "පුරවැසි":{
+        si:"පුරවැසි",
+        en:"Civic Education",
+        ta:"குடியியல் கல்வி"
+    },
+
+    "පුරවැසි අධ්‍යාපනය":{
+        si:"පුරවැසි අධ්‍යාපනය",
+        en:"Civic Education",
+        ta:"குடியியல் கல்வி"
+    },
+
+    "සෞන්දර්ය":{
+        si:"සෞන්දර්ය",
+        en:"Aesthetic Studies",
+        ta:"அழகியல் கல்வி"
+    },
+
+    "සංගීතය":{
+        si:"සංගීතය",
+        en:"Music",
+        ta:"இசை"
+    },
+
+    "නර්තනය":{
+        si:"නර්තනය",
+        en:"Dancing",
+        ta:"நடனம்"
+    },
+
+    "නාට්‍ය හා රංගකලා":{
+        si:"නාට්‍ය හා රංගකලා",
+        en:"Drama & Theatre",
+        ta:"நாடகம் மற்றும் அரங்கக்கலை"
+    },
+
+    "චිත්‍ර":{
+        si:"චිත්‍ර",
+        en:"Art",
+        ta:"சித்திரம்"
+    },
+
+    "භූගෝල විද්‍යාව":{
+        si:"භූගෝල විද්‍යාව",
+        en:"Geography",
+        ta:"புவியியல்"
+    },
+
+    "Geography":{
+        si:"භූගෝල විද්‍යාව",
+        en:"Geography",
+        ta:"புவியியல்"
+    },
+
+    "ICT":{
+        si:"තොරතුරු හා සන්නිවේදන තාක්ෂණය",
+        en:"ICT",
+        ta:"தகவல் மற்றும் தொடர்பாடல் தொழில்நுட்பம்"
+    },
+
+    "Commerce":{
+        si:"වාණිජ",
+        en:"Commerce",
+        ta:"வர்த்தகம்"
+    },
+
+    "සාහිත්‍ය රසස්වාදය":{
+        si:"සාහිත්‍ය රසස්වාදය",
+        en:"Literary Appreciation",
+        ta:"இலக்கிய இரசனை"
+    },
+
+    "කෘෂිකර්මය":{
+        si:"කෘෂිකර්මය",
+        en:"Agriculture",
+        ta:"விவசாயம்"
+    },
+
+    "ගෘහ විද්‍යාව":{
+        si:"ගෘහ විද්‍යාව",
+        en:"Home Economics",
+        ta:"வீட்டுப் பொருளியல்"
+    },
+
+    "Science / Mathematics":{
+        si:"විද්‍යා / ගණිත",
+        en:"Science / Mathematics",
+        ta:"விஞ்ஞானம் / கணிதம்"
+    },
+
+    "Physics":{
+        si:"භෞතික විද්‍යාව",
+        en:"Physics",
+        ta:"இயற்பியல்"
+    },
+
+    "Chemistry":{
+        si:"රසායන විද්‍යාව",
+        en:"Chemistry",
+        ta:"இரசாயனவியல்"
+    },
+
+    "Biology":{
+        si:"ජීව විද්‍යාව",
+        en:"Biology",
+        ta:"உயிரியல்"
+    },
+
+    "Combined Mathematics":{
+        si:"සංයුක්ත ගණිතය",
+        en:"Combined Mathematics",
+        ta:"இணைந்த கணிதம்"
+    },
+
+    "Higher Mathematics":{
+        si:"උසස් ගණිතය",
+        en:"Higher Mathematics",
+        ta:"உயர் கணிதம்"
+    },
+
+    "Agricultural Science":{
+        si:"කෘෂි විද්‍යාව",
+        en:"Agricultural Science",
+        ta:"விவசாய விஞ்ஞானம்"
+    },
+
+    "Accounting":{
+        si:"ගිණුම්කරණය",
+        en:"Accounting",
+        ta:"கணக்கியல்"
+    },
+
+    "Business Studies":{
+        si:"ව්‍යාපාර අධ්‍යයනය",
+        en:"Business Studies",
+        ta:"வணிகக் கல்வி"
+    },
+
+    "Economics":{
+        si:"ආර්ථික විද්‍යාව",
+        en:"Economics",
+        ta:"பொருளியல்"
+    },
+
+    "Sinhala":{
+        si:"සිංහල",
+        en:"Sinhala",
+        ta:"சிங்களம்"
+    },
+
+    "History":{
+        si:"ඉතිහාසය",
+        en:"History",
+        ta:"வரலாறு"
+    },
+
+    "Political Science":{
+        si:"දේශපාලන විද්‍යාව",
+        en:"Political Science",
+        ta:"அரசியல் விஞ்ஞானம்"
+    },
+
+    "Logic & Scientific Method":{
+        si:"තර්ක ශාස්ත්‍රය හා විද්‍යාත්මක ක්‍රමය",
+        en:"Logic & Scientific Method",
+        ta:"தர்க்கமும் விஞ்ஞான முறையும்"
+    },
+
+    "Communication & Media":{
+        si:"සන්නිවේදනය හා මාධ්‍ය",
+        en:"Communication & Media",
+        ta:"தொடர்பாடல் மற்றும் ஊடகம்"
+    },
+
+    "Buddhism":{
+        si:"බුද්ධ ධර්මය",
+        en:"Buddhism",
+        ta:"பௌத்தம்"
+    },
+
+    "Art":{
+        si:"චිත්‍ර",
+        en:"Art",
+        ta:"சித்திரம்"
+    },
+
+    "Dancing":{
+        si:"නර්තනය",
+        en:"Dancing",
+        ta:"நடனம்"
+    },
+
+    "Music":{
+        si:"සංගීතය",
+        en:"Music",
+        ta:"இசை"
+    },
+
+    "Drama & Theatre":{
+        si:"නාට්‍ය හා රංගකලා",
+        en:"Drama & Theatre",
+        ta:"நாடகம் மற்றும் அரங்கக்கலை"
+    },
+
+    "Engineering Technology":{
+        si:"ඉංජිනේරු තාක්ෂණවේදය",
+        en:"Engineering Technology",
+        ta:"பொறியியல் தொழில்நுட்பம்"
+    },
+
+    "Biosystems Technology":{
+        si:"ජෛව පද්ධති තාක්ෂණවේදය",
+        en:"Biosystems Technology",
+        ta:"உயிரியல் முறைமை தொழில்நுட்பம்"
+    },
+
+    "Science for Technology":{
+        si:"තාක්ෂණය සඳහා විද්‍යාව",
+        en:"Science for Technology",
+        ta:"தொழில்நுட்பத்திற்கான விஞ்ஞானம்"
+    },
+
+    "Civil Technology":{
+        si:"සිවිල් තාක්ෂණවේදය",
+        en:"Civil Technology",
+        ta:"கட்டிட தொழில்நுட்பம்"
+    },
+
+    "Mechanical Technology":{
+        si:"යාන්ත්‍රික තාක්ෂණවේදය",
+        en:"Mechanical Technology",
+        ta:"இயந்திர தொழில்நுட்பம்"
+    },
+
+    "Electrical / Electronic Technology":{
+        si:"විදුලි / ඉලෙක්ට්‍රොනික තාක්ෂණය",
+        en:"Electrical / Electronic Technology",
+        ta:"மின்சார / இலத்திரனியல் தொழில்நுட்பம்"
+    },
+
+    "Food Technology":{
+        si:"ආහාර තාක්ෂණවේදය",
+        en:"Food Technology",
+        ta:"உணவு தொழில்நுட்பம்"
+    },
+
+    "Agro Technology":{
+        si:"කෘෂි තාක්ෂණවේදය",
+        en:"Agro Technology",
+        ta:"விவசாய தொழில்நுட்பம்"
+    },
+
+    "Bio-Resource Technology":{
+        si:"ජෛව සම්පත් තාක්ෂණවේදය",
+        en:"Bio-Resource Technology",
+        ta:"உயிர்வள தொழில்நுட்பம்"
+    }
+
+};
+
+
+/* =====================================================
+   PROVINCE TRANSLATIONS
+===================================================== */
+
+const provinceTranslations = {
+
+    "Central Province":{
+        si:"මධ්‍යම පළාත",
+        en:"Central Province",
+        ta:"மத்திய மாகாணம்"
+    },
+
+    "Eastern Province":{
+        si:"නැගෙනහිර පළාත",
+        en:"Eastern Province",
+        ta:"கிழக்கு மாகாணம்"
+    },
+
+    "North Central Province":{
+        si:"උතුරු මැද පළාත",
+        en:"North Central Province",
+        ta:"வட மத்திய மாகாணம்"
+    },
+
+    "Northern Province":{
+        si:"උතුරු පළාත",
+        en:"Northern Province",
+        ta:"வட மாகாணம்"
+    },
+
+    "North Western Province":{
+        si:"වයඹ පළාත",
+        en:"North Western Province",
+        ta:"வட மேற்கு மாகாணம்"
+    },
+
+    "Sabaragamuwa Province":{
+        si:"සබරගමුව පළාත",
+        en:"Sabaragamuwa Province",
+        ta:"சபரகமுவ மாகாணம்"
+    },
+
+    "Southern Province":{
+        si:"දකුණු පළාත",
+        en:"Southern Province",
+        ta:"தென் மாகாணம்"
+    },
+
+    "Uva Province":{
+        si:"ඌව පළාත",
+        en:"Uva Province",
+        ta:"ஊவா மாகாணம்"
+    },
+
+    "Western Province":{
+        si:"බස්නාහිර පළාත",
+        en:"Western Province",
+        ta:"மேல் மாகாணம்"
+    }
+
+};
+
+
+/* =====================================================
+   TERM TRANSLATIONS
+===================================================== */
+
+const termTranslations = {
+
+    "1st Term":{
+        si:"පළමු වාරය",
+        en:"1st Term",
+        ta:"முதலாம் தவணை"
+    },
+
+    "2nd Term":{
+        si:"දෙවන වාරය",
+        en:"2nd Term",
+        ta:"இரண்டாம் தவணை"
+    },
+
+    "3rd Term":{
+        si:"තෙවන වාරය",
+        en:"3rd Term",
+        ta:"மூன்றாம் தவணை"
+    }
+
+};
+
+
+/* =====================================================
+   TRANSLATION HELPER
+===================================================== */
+
+function trSubject(name){
+
+    if(
+        subjectTranslations[name]
+    ){
+
+        return subjectTranslations[name][currentLanguage];
+
+    }
+
+    return name;
+
+}
+
+
+function gradeText(number){
+
+    if(currentLanguage==="si"){
+
+        return number + " ශ්‍රේණිය";
+
+    }
+
+    if(currentLanguage==="ta"){
+
+        return "தரம் " + number;
+
+    }
+
+    return "Grade " + number;
+
+}
+
+
+/* =====================================================
+   APPLY LANGUAGE
+===================================================== */
+
+function applyLanguage(){
+
+    const L =
+        languageData[currentLanguage];
+
+
+    document.documentElement.lang =
+        currentLanguage;
+
+
+    document.getElementById(
+        "siteTitle"
+    ).innerText =
+        "StudyHub Lanka";
+
+
+    document.getElementById(
+        "siteSubtitle"
+    ).innerText =
+        L.subtitle;
+
+
+    document.getElementById(
+        "navHome"
+    ).innerText =
+        L.home;
+
+
+    document.getElementById(
+        "navGrades"
+    ).innerText =
+        L.grades;
+
+
+    document.getElementById(
+        "navFeatures"
+    ).innerText =
+        L.features;
+
+
+    document.getElementById(
+        "adText"
+    ).innerText =
+        L.advertisement;
+
+
+    document.getElementById(
+        "allGradesText"
+    ).innerText =
+        L.grades;
+
+
+    document.querySelectorAll(
+        ".back-btn"
+    ).forEach(function(button){
+
+        button.innerText =
+            L.back;
+
+    });
+
+
+    document.getElementById(
+        "filterTitle"
+    ).innerText =
+        L.paperDetails;
+
+
+    document.getElementById(
+        "provinceLabel"
+    ).innerText =
+        L.province;
+
+
+    document.getElementById(
+        "termLabel"
+    ).innerText =
+        L.term;
+
+
+    document.getElementById(
+        "nextButton"
+    ).innerText =
+        L.next;
+
+
+    document.getElementById(
+        "papersTitle"
+    ).innerText =
+        L.pastPapers;
+
+
+    document.getElementById(
+        "featuresTitle"
+    ).innerText =
+        L.features;
+
+
+    document.getElementById(
+        "featuresBreadcrumb"
+    ).innerText =
+        "StudyHub Lanka › " +
+        L.features;
+
+
+    document.getElementById(
+        "darkLightButton"
+    ).innerText =
+        L.darkLight;
+
+
+    document.getElementById(
+        "feature1Title"
+    ).innerText =
+        L.feature1Title;
+
+
+    document.getElementById(
+        "feature1Text"
+    ).innerText =
+        L.feature1Text;
+
+
+    document.getElementById(
+        "feature2Title"
+    ).innerText =
+        L.feature2Title;
+
+
+    document.getElementById(
+        "feature2Text"
+    ).innerText =
+        L.feature2Text;
+
+
+    document.getElementById(
+        "feature3Title"
+    ).innerText =
+        L.feature3Title;
+
+
+    document.getElementById(
+        "feature3Text"
+    ).innerText =
+        L.feature3Text;
+
+
+    document.getElementById(
+        "feature4Title"
+    ).innerText =
+        L.feature4Title;
+
+
+    document.getElementById(
+        "feature4Text"
+    ).innerText =
+        L.feature4Text;
+
+
+    document.getElementById(
+        "feature5Title"
+    ).innerText =
+        L.feature5Title;
+
+
+    document.getElementById(
+        "feature5Text"
+    ).innerText =
+        L.feature5Text;
+
+
+    document.getElementById(
+        "feature6Title"
+    ).innerText =
+        L.feature6Title;
+
+
+    document.getElementById(
+        "feature6Text"
+    ).innerText =
+        L.feature6Text;
+
+
+    document.getElementById(
+        "footer2"
+    ).innerText =
+        L.footer2;
+
+
+    updateProvinceOptions();
+
+    updateTermOptions();
+
+    refreshCurrentPage();
+
+}
+
+
+/* =====================================================
+   PROVINCES
+===================================================== */
+
+function updateProvinceOptions(){
+
+    const select =
+        document.getElementById(
+            "provinceSelect"
+        );
+
+    const oldValue =
+        selectedProvince ||
+        select.value;
+
+
+    select.innerHTML = "";
+
+
+    const first =
+        document.createElement("option");
+
+    first.value = "";
+
+    first.innerText =
+        languageData[
+            currentLanguage
+        ].selectProvince;
+
+    select.appendChild(first);
+
+
+    Object.keys(
+        provinceTranslations
+    ).forEach(function(value){
+
+        const option =
+            document.createElement("option");
+
+        option.value =
+            value;
+
+        option.innerText =
+            provinceTranslations[
+                value
+            ][currentLanguage];
+
+        select.appendChild(option);
+
+    });
+
+
+    select.value =
+        oldValue || "";
+
+}
+
+
+/* =====================================================
+   TERMS
+===================================================== */
+
+function updateTermOptions(){
+
+    const select =
+        document.getElementById(
+            "termSelect"
+        );
+
+    const oldValue =
+        selectedTerm ||
+        select.value;
+
+
+    select.innerHTML = "";
+
+
+    const first =
+        document.createElement("option");
+
+    first.value = "";
+
+    first.innerText =
+        languageData[
+            currentLanguage
+        ].selectTerm;
+
+    select.appendChild(first);
+
+
+    Object.keys(
+        termTranslations
+    ).forEach(function(value){
+
+        const option =
+            document.createElement("option");
+
+        option.value =
+            value;
+
+        option.innerText =
+            termTranslations[
+                value
+            ][currentLanguage];
+
+        select.appendChild(option);
+
+    });
+
+
+    select.value =
+        oldValue || "";
+
+}
+
+
+/* =====================================================
+   CREATE GRADES
+===================================================== */
+
+function createGrades(){
+
+    const grid =
+        document.getElementById(
+            "gradeGrid"
+        );
+
+    grid.innerHTML = "";
+
+
+    grades.forEach(function(grade){
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "grade";
+
+
+        item.innerHTML = `
+
+            <div class="grade-number">
+                ${grade.number}
+            </div>
+
+            <div class="grade-name">
+                ${gradeText(grade.number)}
+            </div>
+
+            <div class="grade-arrow">
+                ›
+            </div>
+
+        `;
+
+
+        item.onclick = function(){
+
+            selectGrade(
+                grade.number
+            );
+
+        };
+
+
+        grid.appendChild(item);
+
+    });
+
+}
+
+
+/* =====================================================
+   SELECT GRADE
+===================================================== */
+
+function selectGrade(grade){
+
+    selectedGrade =
+        grade;
+
+    selectedSubject =
+        "";
+
+
+    const subjects =
+        getSubjects(grade);
+
+
+    document.getElementById(
+        "subjectPageTitle"
+    ).innerText =
+        gradeText(grade) +
+        (
+            currentLanguage==="si"
+            ? " විෂයයන්"
+            :
+            currentLanguage==="ta"
+            ? " பாடங்கள்"
+            :
+            " Subjects"
+        );
+
+
+    document.getElementById(
+        "subjectBreadcrumb"
+    ).innerText =
+        languageData[
+            currentLanguage
+        ].home +
+        " › " +
+        gradeText(grade);
+
+
+    createSubjectCards(
+        subjects
+    );
+
+
+    navigate(
+        "subjectPage"
+    );
+
+}
+
+
+/* =====================================================
+   GET SUBJECTS
+===================================================== */
+
+function getSubjects(grade){
+
+    if(
+        grade>=1 &&
+        grade<=5
+    ){
+
+        return primarySubjects;
+
+    }
+
+
+    if(
+        grade>=6 &&
+        grade<=9
+    ){
+
+        return subjects69;
+
+    }
+
+
+    if(
+        grade>=10 &&
+        grade<=11
+    ){
+
+        return subjects1011;
+
+    }
+
+
+    if(
+        grade>=12 &&
+        grade<=13
+    ){
+
+        return [
+
+            {
+                name:"Science / Mathematics",
+                icon:"🔬"
+            },
+
+            {
+                name:"Commerce",
+                icon:"💰"
+            },
+
+            {
+                name:"Arts",
+                icon:"🎨"
+            },
+
+            {
+                name:"Technology",
+                icon:"⚙️"
+            }
+
+        ];
+
+    }
+
+
+    return [];
+
+}
+
+
+/* =====================================================
+   SUBJECT CARDS
+===================================================== */
+
+function createSubjectCards(
+    subjects
+){
+
+    const grid =
+        document.getElementById(
+            "subjectGrid"
+        );
+
+    grid.innerHTML = "";
+
+
+    subjects.forEach(function(subject){
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "subject";
+
+
+        card.innerHTML = `
+
+            <div class="subject-icon">
+                ${subject.icon}
+            </div>
+
+            <h3>
+                ${trSubject(subject.name)}
+            </h3>
+
+        `;
+
+
+        card.onclick = function(){
+
+            selectSubject(
+                subject.name
+            );
+
+        };
+
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   SELECT SUBJECT
+===================================================== */
+
+function selectSubject(
+    subject
+){
+
+    selectedSubject =
+        subject;
+
+
+    if(
+        selectedGrade>=6 &&
+        selectedGrade<=9 &&
+        subject==="සෞන්දර්ය"
+    ){
+
+        openSubSubjects(
+            subject,
+            aesthetics
+        );
+
+        return;
+
+    }
+
+
+    if(
+        selectedGrade>=10 &&
+        selectedGrade<=11
+    ){
+
+        if(
+            subject==="1 වන Bucket"
+        ){
+
+            openSubSubjects(
+                subject,
+                bucket1
+            );
+
+            return;
+
+        }
+
+
+        if(
+            subject==="2 වන Bucket"
+        ){
+
+            openSubSubjects(
+                subject,
+                bucket2
+            );
+
+            return;
+
+        }
+
+
+        if(
+            subject==="3 වන Bucket"
+        ){
+
+            openSubSubjects(
+                subject,
+                bucket3
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    if(
+        selectedGrade>=12 &&
+        selectedGrade<=13
+    ){
+
+        if(
+            subject==="Science / Mathematics"
+        ){
+
+            openSubSubjects(
+                subject,
+                alScience
+            );
+
+            return;
+
+        }
+
+
+        if(
+            subject==="Commerce"
+        ){
+
+            openSubSubjects(
+                subject,
+                alCommerce
+            );
+
+            return;
+
+        }
+
+
+        if(
+            subject==="Arts"
+        ){
+
+            openSubSubjects(
+                subject,
+                alArts
+            );
+
+            return;
+
+        }
+
+
+        if(
+            subject==="Technology"
+        ){
+
+            openSubSubjects(
+                subject,
+                alTechnology
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    openFilter();
+
+}
+
+
+/* =====================================================
+   SUB SUBJECTS
+===================================================== */
+
+function openSubSubjects(
+    title,
+    subjects
+){
+
+    document.getElementById(
+        "subTitle"
+    ).innerText =
+        trSubject(title);
+
+
+    document.getElementById(
+        "subBreadcrumb"
+    ).innerText =
+
+        gradeText(
+            selectedGrade
+        ) +
+        " › " +
+        trSubject(title);
+
+
+    const grid =
+        document.getElementById(
+            "subGrid"
+        );
+
+    grid.innerHTML = "";
+
+
+    subjects.forEach(function(item){
+
+        const box =
+            document.createElement("div");
+
+        box.className =
+            "sub-box";
+
+
+        box.innerHTML = `
+
+            <div>
+
+                <div style="
+                    font-size:35px;
+                    margin-bottom:8px;
+                ">
+                    ${item.icon}
+                </div>
+
+                ${trSubject(item.name)}
+
+            </div>
+
+        `;
+
+
+        box.onclick = function(){
+
+            selectedSubject =
+                item.name;
+
+            openFilter();
+
+        };
+
+
+        grid.appendChild(box);
+
+    });
+
+
+    navigate(
+        "subSubjectPage"
+    );
+
+}
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+function openFilter(){
+
+    document.getElementById(
+        "filterBreadcrumb"
+    ).innerText =
+
+        gradeText(
+            selectedGrade
+        ) +
+        " › " +
+        trSubject(
+            selectedSubject
+        );
+
+
+    selectedProvince = "";
+
+    selectedTerm = "";
+
+
+    document.getElementById(
+        "provinceSelect"
+    ).value = "";
+
+
+    document.getElementById(
+        "termSelect"
+    ).value = "";
+
+
+    navigate(
+        "filterPage"
+    );
+
+}
+
+
+/* =====================================================
+   SHOW PAPERS
+===================================================== */
+
+function showPapers(){
+
+    selectedProvince =
+        document.getElementById(
+            "provinceSelect"
+        ).value;
+
+
+    selectedTerm =
+        document.getElementById(
+            "termSelect"
+        ).value;
+
+
+    if(
+        selectedProvince==="" ||
+        selectedTerm===""
+    ){
+
+        alert(
+            languageData[
+                currentLanguage
+            ].selectBoth
+        );
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "papersBreadcrumb"
+    ).innerText =
+
+        gradeText(
+            selectedGrade
+        ) +
+        " › " +
+        trSubject(
+            selectedSubject
+        ) +
+        " › " +
+        provinceTranslations[
+            selectedProvince
+        ][currentLanguage] +
+        " › " +
+        termTranslations[
+            selectedTerm
+        ][currentLanguage];
+
+
+    createPaperCards();
+
+
+    navigate(
+        "papersPage"
+    );
+
+}
+
+
+/* =====================================================
+   PAPER CARDS
+===================================================== */
+
+function createPaperCards(){
+
+    const grid =
+        document.getElementById(
+            "papersGrid"
+        );
+
+    grid.innerHTML = "";
+
+
+    for(
+        let year=2025;
+        year>=2019;
+        year--
+    ){
+
+        const found =
+            papers.find(function(paper){
+
+                return(
+
+                    Number(
+                        paper.grade
+                    ) ===
+                    Number(
+                        selectedGrade
+                    )
+
+                    &&
+
+                    paper.subject ===
+                    selectedSubject
+
+                    &&
+
+                    paper.province ===
+                    selectedProvince
+
+                    &&
+
+                    paper.term ===
+                    selectedTerm
+
+                    &&
+
+                    Number(
+                        paper.year
+                    ) ===
+                    Number(year)
+
+                );
+
+            });
+
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "paper-card";
+
+
+        if(found){
+
+            card.innerHTML = `
+
+                <h3>
+                    ${year}
+                </h3>
+
+                <div class="paper-buttons">
+
+                    <button
+                        class="open-btn"
+                        onclick="openPDF('${found.paperUrl}')">
+
+                        ${languageData[
+                            currentLanguage
+                        ].openPaper}
+
+                    </button>
+
+                    <button
+                        class="mark-btn"
+                        onclick="openPDF('${found.markingUrl}')">
+
+                        ${languageData[
+                            currentLanguage
+                        ].marking}
+
+                    </button>
+
+                </div>
+
+            `;
+
+        }else{
+
+            card.innerHTML = `
+
+                <h3>
+                    ${year}
+                </h3>
+
+                <div class="not-uploaded">
+
+                    ${languageData[
+                        currentLanguage
+                    ].notUploaded}
+
+                </div>
+
+            `;
+
+        }
+
+
+        grid.appendChild(card);
+
+    }
+
+}
+
+
+/* =====================================================
+   OPEN PDF
+===================================================== */
+
+function openPDF(url){
+
+    if(!url){
+
+        alert(
+            languageData[
+                currentLanguage
+            ].paperNotUploaded
+        );
+
+        return;
+
+    }
+
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function navigate(page){
+
+    if(
+        currentPage!==page
+    ){
+
+        previousPages.push(
+            currentPage
+        );
+
+    }
+
+    showPage(
+        page
+    );
+
+}
+
+
+function showPage(page){
+
+    document
+        .querySelectorAll(".page")
+        .forEach(function(item){
+
+            item.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    document
+        .getElementById(page)
+        .classList.add(
+            "active"
+        );
+
+
+    currentPage =
+        page;
+
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+}
+
+
+/* =====================================================
+   BACK
+===================================================== */
+
+function goBack(){
+
+    if(
+        previousPages.length>0
+    ){
+
+        const previous =
+            previousPages.pop();
+
+        showPage(
+            previous
+        );
+
+
+        refreshCurrentPage();
+
+    }else{
+
+        showPage(
+            "homePage"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   ALL GRADES
+===================================================== */
+
+function goToGrades(){
+
+    showPage(
+        "homePage"
+    );
+
+
+    setTimeout(function(){
+
+        document
+            .querySelector(
+                ".all-grades"
+            )
+            .scrollIntoView({
+                behavior:"smooth"
+            });
+
+    },100);
+
+}
+
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+function showFeatures(){
+
+    navigate(
+        "featuresPage"
+    );
+
+}
+
+
+/* =====================================================
+   CHANGE LANGUAGE
+===================================================== */
+
+function changeLanguage(
+    lang
+){
+
+    currentLanguage =
+        lang;
+
+
+    localStorage.setItem(
+        "studyhubLanguage",
+        lang
+    );
+
+
+    applyLanguage();
+
+
+    closeControlMenu();
+
+}
+
+
+/* =====================================================
+   REFRESH CURRENT PAGE
+===================================================== */
+
+function refreshCurrentPage(){
+
+    if(
+        currentPage==="homePage"
+    ){
+
+        createGrades();
+
+    }
+
+
+    else if(
+        currentPage==="subjectPage"
+    ){
+
+        if(
+            selectedGrade
+        ){
+
+            selectGrade(
+                selectedGrade
+            );
+
+            previousPages =
+                previousPages.slice(
+                    0,
+                    Math.max(
+                        0,
+                        previousPages.length-1
+                    )
+                );
+
+        }
+
+    }
+
+
+    else if(
+        currentPage==="subSubjectPage"
+    ){
+
+        if(
+            selectedSubject
+        ){
+
+            let list = [];
+
+
+            if(
+                selectedSubject==="සෞන්දර්ය"
+            ){
+
+                list =
+                    aesthetics;
+
+            }
+
+
+            else if(
+                selectedSubject==="1 වන Bucket"
+            ){
+
+                list =
+                    bucket1;
+
+            }
+
+
+            else if(
+                selectedSubject==="2 වන Bucket"
+            ){
+
+                list =
+                    bucket2;
+
+            }
+
+
+            else if(
+                selectedSubject==="3 වන Bucket"
+            ){
+
+                list =
+                    bucket3;
+
+            }
+
+
+            else if(
+                selectedSubject==="Science / Mathematics"
+            ){
+
+                list =
+                    alScience;
+
+            }
+
+
+            else if(
+                selectedSubject==="Commerce"
+            ){
+
+                list =
+                    alCommerce;
+
+            }
+
+
+            else if(
+                selectedSubject==="Arts"
+            ){
+
+                list =
+                    alArts;
+
+            }
+
+
+            else if(
+                selectedSubject==="Technology"
+            ){
+
+                list =
+                    alTechnology;
+
+            }
+
+
+            if(
+                list.length>0
+            ){
+
+                renderSubSubjectsWithoutNavigation(
+                    selectedSubject,
+                    list
+                );
+
+            }
+
+        }
+
+    }
+
+
+    else if(
+        currentPage==="filterPage"
+    ){
+
+        document.getElementById(
+            "filterBreadcrumb"
+        ).innerText =
+
+            gradeText(
+                selectedGrade
+            ) +
+            " › " +
+            trSubject(
+                selectedSubject
+            );
+
+    }
+
+
+    else if(
+        currentPage==="papersPage"
+    ){
+
+        document.getElementById(
+            "papersBreadcrumb"
+        ).innerText =
+
+            gradeText(
+                selectedGrade
+            ) +
+            " › " +
+            trSubject(
+                selectedSubject
+            ) +
+            " › " +
+            provinceTranslations[
+                selectedProvince
+            ][currentLanguage] +
+            " › " +
+            termTranslations[
+                selectedTerm
+            ][currentLanguage];
+
+
+        createPaperCards();
+
+    }
+
+}
+
+
+/* =====================================================
+   RENDER SUB SUBJECTS WITHOUT NAVIGATION
+===================================================== */
+
+function renderSubSubjectsWithoutNavigation(
+    title,
+    subjects
+){
+
+    document.getElementById(
+        "subTitle"
+    ).innerText =
+        trSubject(title);
+
+
+    document.getElementById(
+        "subBreadcrumb"
+    ).innerText =
+
+        gradeText(
+            selectedGrade
+        ) +
+        " › " +
+        trSubject(title);
+
+
+    const grid =
+        document.getElementById(
+            "subGrid"
+        );
+
+    grid.innerHTML = "";
+
+
+    subjects.forEach(function(item){
+
+        const box =
+            document.createElement("div");
+
+        box.className =
+            "sub-box";
+
+
+        box.innerHTML = `
+
+            <div>
+
+                <div style="
+                    font-size:35px;
+                    margin-bottom:8px;
+                ">
+                    ${item.icon}
+                </div>
+
+                ${trSubject(item.name)}
+
+            </div>
+
+        `;
+
+
+        box.onclick = function(){
+
+            selectedSubject =
+                item.name;
+
+            openFilter();
+
+        };
+
+
+        grid.appendChild(box);
+
+    });
+
+}
+
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+function toggleDarkMode(){
+
+    document
+        .body
+        .classList
+        .toggle("dark");
+
+
+    localStorage.setItem(
+        "studyhubDark",
+        document.body.classList.contains(
+            "dark"
+        )
+    );
+
+}
+
+
+/* =====================================================
+   FLOATING SETTINGS
+===================================================== */
+
+const floatingControl =
+    document.getElementById(
+        "floatingControl"
+    );
+
+
+const controlMenu =
+    document.getElementById(
+        "controlMenu"
+    );
+
+
+floatingControl.onclick =
+function(){
+
+    if(
+        dragging
+    ){
+
+        return;
+
+    }
+
+
+    controlMenu.classList.toggle(
+        "show"
+    );
+
+};
+
+
+function closeControlMenu(){
+
+    controlMenu.classList.remove(
+        "show"
+    );
+
+}
+
+
+/* =====================================================
+   DRAG FLOATING SETTINGS
+===================================================== */
+
+let dragging =
+    false;
+
+let moved =
+    false;
+
+let startX =
+    0;
+
+let startY =
+    0;
+
+let originalLeft =
+    0;
+
+let originalTop =
+    0;
+
+
+floatingControl.addEventListener(
+    "pointerdown",
+    function(e){
+
+        dragging =
+            false;
+
+        moved =
+            false;
+
+
+        const rect =
+            floatingControl.getBoundingClientRect();
+
+
+        startX =
+            e.clientX;
+
+        startY =
+            e.clientY;
+
+        originalLeft =
+            rect.left;
+
+        originalTop =
+            rect.top;
+
+
+        floatingControl.setPointerCapture(
+            e.pointerId
+        );
+
+    }
+);
+
+
+floatingControl.addEventListener(
+    "pointermove",
+    function(e){
+
+        const dx =
+            e.clientX-startX;
+
+        const dy =
+            e.clientY-startY;
+
+
+        if(
+            Math.abs(dx)>5 ||
+            Math.abs(dy)>5
+        ){
+
+            dragging =
+                true;
+
+            moved =
+                true;
+
+        }
+
+
+        if(!dragging)
+            return;
+
+
+        const x =
+            originalLeft+dx;
+
+        const y =
+            originalTop+dy;
+
+
+        const maxX =
+            window.innerWidth -
+            floatingControl.offsetWidth;
+
+        const maxY =
+            window.innerHeight -
+            floatingControl.offsetHeight;
+
+
+        const finalX =
+            Math.max(
+                5,
+                Math.min(
+                    x,
+                    maxX-5
+                )
+            );
+
+
+        const finalY =
+            Math.max(
+                5,
+                Math.min(
+                    y,
+                    maxY-5
+                )
+            );
+
+
+        floatingControl.style.left =
+            finalX+"px";
+
+
+        floatingControl.style.top =
+            finalY+"px";
+
+
+        floatingControl.style.right =
+            "auto";
+
+
+        floatingControl.style.bottom =
+            "auto";
+
+    }
+);
+
+
+floatingControl.addEventListener(
+    "pointerup",
+    function(e){
+
+        if(
+            floatingControl.hasPointerCapture(
+                e.pointerId
+            )
+        ){
+
+            floatingControl.releasePointerCapture(
+                e.pointerId
+            );
+
+        }
+
+
+        setTimeout(
+            function(){
+
+                dragging =
+                    false;
+
+                moved =
+                    false;
+
+            },
+            50
+        );
+
+    }
+);
+
+
+/* =====================================================
+   CLOSE MENU WHEN CLICKING OUTSIDE
+===================================================== */
+
+document.addEventListener(
+    "click",
+    function(e){
+
+        if(
+            !floatingControl.contains(
+                e.target
+            ) &&
+            !controlMenu.contains(
+                e.target
+            )
+        ){
+
+            closeControlMenu();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   SWIPE BACK
+===================================================== */
+
+let touchStart =
+    0;
+
+
+document.addEventListener(
+    "touchstart",
+    function(e){
+
+        touchStart =
+            e.changedTouches[0]
+                .screenX;
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+document.addEventListener(
+    "touchend",
+    function(e){
+
+        const touchEnd =
+            e.changedTouches[0]
+                .screenX;
+
+
+        const difference =
+            touchEnd-touchStart;
+
+
+        if(
+            difference>90 &&
+            currentPage!=="homePage"
+        ){
+
+            goBack();
+
+        }
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+/* =====================================================
+   START
+===================================================== */
+
+if(
+    localStorage.getItem(
+        "studyhubDark"
+    )==="true"
+){
+
+    document
+        .body
+        .classList
+        .add("dark");
+
+}
+
+
+createGrades();
+
+applyLanguage();
+
+
+</script>
+
+</body>
+</html>
